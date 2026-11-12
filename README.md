@@ -58,3 +58,7 @@ Put optimized `.glb` files under `public/assets/`, then load them with `AssetLoa
 ## Production hardening
 
 Before shipping a serious simulator build, add compressed KTX2/Basis textures, Draco/Meshopt geometry compression, asset version hashes, WebGL context-loss recovery, telemetry/crash reporting, track collision meshes, deterministic replay tests, and device-specific graphics tiers.
+
+
+## GRIDBORN visual/handling update
+This update separates wheel steering pivots from tyre spin pivots, adds a smoothed chase camera, a gradient sky/horizon with atmospheric fog, and a more detailed procedural open-wheel car model. The car remains a procedural model so the project does not depend on third-party copyrighted vehicle assets.
