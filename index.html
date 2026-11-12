@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no,maximum-scale=1" />
+  <meta name="theme-color" content="#080b10" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="GRIDBORN" />
+  <link rel="manifest" href="./manifest.json" />
+  <link rel="apple-touch-icon" href="./icons/icon-180.png" />
+  <title>GRIDBORN</title>
+</head>
+<body>
+  <canvas id="game"></canvas>
+
+  <div id="boot" class="screen">
+    <div class="panel">
+      <div class="brand">GRID<span>BORN</span></div>
+      <p id="bootStatus">Initializing physics…</p>
+      <button id="bootStart" class="primary" disabled>START</button>
+    </div>
+  </div>
+
+  <div id="menu" class="screen hidden">
+    <div class="panel menu-panel">
+      <div class="brand">GRID<span>BORN</span></div>
+      <button data-action="race" class="primary">RACE</button>
+      <button data-action="garage">GARAGE</button>
+      <button data-action="settings">SETTINGS</button>
+    </div>
+  </div>
+
+  <div id="hud" class="hidden">
+    <div class="topbar">
+      <div class="telemetry"><span class="label">SPEED</span><span id="speed">0</span><small>km/h</small></div>
+      <div class="telemetry gear"><span class="label">GEAR</span><span id="gear">N</span></div>
+      <div class="telemetry"><span class="label">RPM</span><span id="rpm">0</span></div>
+    </div>
+
+    <div class="rpm-wrap"><div id="rpmBar"></div></div>
+
+    <div class="right-hud">
+      <div class="tire-grid">
+        <div id="tFL" class="tire">FL</div><div id="tFR" class="tire">FR</div>
+        <div id="tRL" class="tire">RL</div><div id="tRR" class="tire">RR</div>
+      </div>
+      <div class="energy"><span>ERS</span><div><i id="ersBar"></i></div></div>
+      <div class="energy"><span>FUEL</span><div><i id="fuelBar"></i></div></div>
+    </div>
+
+    <canvas id="trackMap" width="180" height="120"></canvas>
+
+    <div id="touchControls">
+      <div id="steerLeft" class="steer-btn">◀</div>
+      <div id="steerRight" class="steer-btn">▶</div>
+      <div id="pedals">
+        <div id="brake" class="pedal">BRAKE</div>
+        <div id="throttle" class="pedal accel">THROTTLE</div>
+      </div>
+    </div>
+
+    <div class="bottom-row">
+      <button id="gyroCalibrate">CALIBRATE GYRO</button>
+      <button id="pause">PAUSE</button>
+    </div>
+  </div>
+
+  <div id="settings" class="screen hidden">
+    <div class="panel">
+      <h2>SETTINGS</h2>
+      <label>Graphics <select id="graphics"><option>High</option><option selected>Medium</option><option>Low</option></select></label>
+      <label>Control <select id="control"><option selected>Gyro</option><option>Touch</option></select></label>
+      <label>Steering sensitivity <input id="sensitivity" type="range" min="0.5" max="2" step="0.05" value="1"></label>
+      <label>ABS <input id="abs" type="checkbox" checked></label>
+      <label>Traction control <input id="tc" type="checkbox" checked></label>
+      <button data-action="back">BACK</button>
+    </div>
+  </div>
+
+  <div id="raceSummary" class="screen hidden">
+    <div class="panel">
+      <h2>SESSION COMPLETE</h2>
+      <div id="summary"></div>
+      <button data-action="race" class="primary">REPLAY</button>
+      <button data-action="menu">MENU</button>
+    </div>
+  </div>
+
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>
